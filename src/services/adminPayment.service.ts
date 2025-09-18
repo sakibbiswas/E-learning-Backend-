@@ -1,6 +1,4 @@
 import { Payment } from "../models/Payment.model";
-import { User } from "../models/User.model";
-import { Course } from "../models/Course.model";
 
 /**
  * List all payments with user + course info
