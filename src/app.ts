@@ -16,7 +16,15 @@ import adminAnalyticsRoutes from "./routes/adminAnalytics.routes";
 const app = express();
 
 // Middlewares
-app.use(cors());
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'https://course-learning-five.vercel.app'],
+    credentials: true,
+   }),
+   
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(morgan("dev"));
@@ -29,6 +37,9 @@ app.use("/api/payment", paymentRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/payments", adminPaymentRoutes);  
 app.use("/api/admin/analytics", adminAnalyticsRoutes);
+
+//get
+app.get("/", (_req, res) => res.send("E-learning Backend is running"));
 
 // Serve a favicon (create a favicon.ico in /public folder)
 app.use("/favicon.ico", express.static(path.join(__dirname, "../public/favicon.ico")));
